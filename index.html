@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .ml-id {
+            width: calc(50% - 10px);
+            float: left;
+            margin-right: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .corner-box {
+            width: calc(50% - 10px);
+            height: 200px;
+            float: left;
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .corner-box img {
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+        }
+
+        .corner-box p {
+            padding: 5px;
+            margin: 0;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .corner-box.selected {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .pulsa-options {
+            clear: both;
+            margin-top: 20px;
+        }
+
+        .pulsa-options input[type="radio"] {
+            display: none;
+        }
+
+        .pulsa-options label {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pulsa-options input[type="radio"]:checked+label {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .buy-button {
+            clear: both;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .floating-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="ml-id" placeholder="Masukkan ID ML">
+
+        <div class="corner-box" id="cornerBox1">
+            <img src="https://gcdnb.pbrd.co/images/WorgHZDMxBe1.jpg?o=1" alt="Gambar 1">
+            <p>starlight 1
+(90 ribu)</p>
+        </div>
+
+        <div class="corner-box" id="cornerBox2">
+            <img src="https://gcdnb.pbrd.co/images/WorgHZDMxBe1.jpg?o=1" alt="Gambar 2">
+            <p>starlight 2 (134 ribu)</p>
+        </div>
+
+     <div class="pulsa-options">
+    <input type="radio" id="pulsa1" name="pulsa" value="pulsa1">
+    <label for="pulsa1">pulsa</label>
+    <input type="radio" id="pulsa2" name="pulsa" value="pulsa2">
+    <label for="pulsa2">dana</label>
+    <input type="radio" id="pulsa3" name="pulsa" value="pulsa3">
+    <label for="pulsa3">ovo</label>
+</div>
+
+        <button class="buy-button" onclick="showNotification()">Beli</button>
+
+        <div class="floating-notification" id="notification">
+            berhasil di beli dan sedang di proses, pastikan saldo anda ada uang nya ya
+        </div>
+    </div>
+
+    <script>
+        function showNotification() {
+            var notification = document.getElementById("notification");
+            notification.style.display = "block";
+            setTimeout(function () {
+                notification.style.display = "none";
+            }, 3000);
+        }
+
+        var cornerBox1 = document.getElementById("cornerBox1");
+        cornerBox1.addEventListener("click", function () {
+            this.classList.toggle("selected");
+        });
+
+        var cornerBox2 = document.getElementById("cornerBox2");
+        cornerBox2.addEventListener("click", function () {
+            this.classList.toggle("selected");
+        });
+    </script>
+</body>
+
+</html>
